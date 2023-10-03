@@ -1,35 +1,34 @@
 @use 'variaveis';
+@use 'header';
 @use 'hero';
 @use 'shows';
 @use 'plans';
 @use 'available-devices';
+@use 'faq';
+@use 'footer';
 
 @font-face {
     font-family: Avenir;
-    src: url(/assets/fonts/Avenir-Regular.woff2);
+    src: url(../../assets/fonts/Avenir-Regular.woff2);
     font-weight: 400;
 }
 
 @font-face {
     font-family: Avenir;
-    src: url(/assets/fonts/Avenir-Bold.woff2);
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
     font-weight: 700;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: avenir, sans-serif;
+    font-family: Avenir, sans-serif;
+    list-style: none;
 }
 
 body {
     background-color: variaveis.$corDeFundo;
-}
-
-@mixin title($fontSize: 40px) {
-    @include text($fontSize);
-    color: variaveis.$corTextoSecundario;
 }
 
 @mixin text($fontSize: 16px) {
@@ -38,16 +37,57 @@ body {
     color: variaveis.$corTextoPrincipal;
 }
 
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$corTextoSecundario
+}
+
 .text--big {
     @include text(18px);
+
+    @media (max-width:768px) {
+        @include text(15px)
+    }
 }
 
 .text {
     @include text;
+
+    @media (max-width:768px) {
+        @include text(14px)
+    }
 }
 
 .text--small {
     @include text(12px);
+
+    @media (max-width:768px) {
+        @include text(11px)
+    }
+}
+
+.title--big {
+    @include title(44px);
+
+    @media (max-width:768px) {
+        @include title(26px)
+    }
+}
+
+.title {
+    @include title;
+
+    @media (max-width:768px) {
+        @include title(24px)
+    }
+}
+
+.title--small {
+    @include title(28px);
+
+    @media (max-width:768px) {
+        @include title(22px)
+    }
 }
 
 .link-text {
@@ -56,66 +96,97 @@ body {
     text-decoration: underline;
 }
 
-.title--big {
-    @include title(44px);
-}
-
-.title {
-    @include title;
-}
-
-.title--small {
-    @include title(28px);
-}
-
 .button {
-        display: block;
-        width: 100%;
-        height: 60px;
-        font-size: 18px;
-        color: variaveis.$corTextoSecundario;
-        background-color: #6421ff;
-        text-transform: uppercase;
-        border-radius: 4px;
-        margin-top: 2vw;
-        margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    color: variaveis.$corTextoSecundario;
+    background-color: #6421ff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid #6421ff;
+
+    &:hover {
+        background-color: lighten($color: #6421ff, $amount: 3%);
     }
 
-    .image-text-section {
-        padding: 5.6vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-    
+
+    &--secondary {
+        background-color: #0063e5;
+        border-color: #0063e5;
+
+        &:hover {
+            background-color: lighten($color: #0063e5, $amount: 3%);
+        }
+    }
+
+    &--dark {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        border-color: variaveis.$corTextoSecundario;
+
+        &:hover {
+            background-color: rgba($color: variaveis.$corTextoSecundario, $alpha: 0.8);
+            color: variaveis.$corDeFundo;
+        }
+    }
+}
+
+section {
+    min-height: 50vw;
+}
+
+.image-text-section {
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    @media (max-width:768px) {
+        display: block;
+    }
+
+    &__text_container {
+        padding: 0 2vw;
+
+        h2 {
+            margin-bottom: 24px;
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    &--image-full-width {
+        display: block;
+        position: relative;
+
         img {
             max-width: 100%;
         }
-    
+
         &__text_container {
-            padding: 0.2vw;
-    
-            h2 {
-                margin-bottom: 24px;
-            }
-        }
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            // width: calc(50%-5.6vw);
+            padding-right: 11.2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
-        &--image-full-width {
-            display: block;
-            position: relative;
-
-            img {
+            @media (max-width:768px) {
+                position: relative;
+                left: 0;
                 width: 100%;
-            }
-
-            &__text_container {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                height: 100%;
-                width: calc(50% - 5.6vw);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
             }
         }
     }
+}
