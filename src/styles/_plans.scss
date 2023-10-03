@@ -12,8 +12,8 @@
         justify-content: space-around;
         margin-top: 50px;
 
-        @media (max-width:768px) {
-            display: block;
+        @media (max-width: 768px) {
+            display: block; 
         }
 
         .button {
@@ -21,7 +21,7 @@
         }
         
         &__item {
-            text-align: center;
+            text-align: center; 
             padding: 60px 44px 44px;
             max-width: 380px;
             width: 100%;
@@ -33,16 +33,16 @@
             }
 
             img {
-                height: 83px;
+                height: 83px; 
             }
         }
 
         strong {
-            display: block;
+            display: block; 
         }
     }
 
     p {
-        text-align: center;
+        text-align: center; 
     }
 }

@@ -7,6 +7,7 @@
 @use 'faq';
 @use 'footer';
 
+// Define fontes personalizadas usando @font-face
 @font-face {
     font-family: Avenir;
     src: url(../../assets/fonts/Avenir-Regular.woff2);
@@ -19,6 +20,7 @@
     font-weight: 700;
 }
 
+// Estilos para todos os elementos HTML
 * {
     margin: 0;
     padding: 0;
@@ -31,6 +33,7 @@ body {
     background-color: variaveis.$corDeFundo;
 }
 
+// Mixins para definir estilos de texto e título com opções de tamanho
 @mixin text($fontSize: 16px) {
     font-size: $fontSize;
     line-height: $fontSize + 10px;
@@ -39,54 +42,56 @@ body {
 
 @mixin title($fontSize: 40px) {
     @include text($fontSize);
-    color: variaveis.$corTextoSecundario
+    color: variaveis.$corTextoSecundario;
 }
 
+// Classes para estilos de texto com tamanhos diferentes
 .text--big {
     @include text(18px);
 
-    @media (max-width:768px) {
-        @include text(15px)
+    @media (max-width: 768px) {
+        @include text(15px);
     }
 }
 
 .text {
     @include text;
 
-    @media (max-width:768px) {
-        @include text(14px)
+    @media (max-width: 768px) {
+        @include text(14px);
     }
 }
 
 .text--small {
     @include text(12px);
 
-    @media (max-width:768px) {
-        @include text(11px)
+    @media (max-width: 768px) {
+        @include text(11px);
     }
 }
 
+// Classes para estilos de título com tamanhos diferentes
 .title--big {
     @include title(44px);
 
-    @media (max-width:768px) {
-        @include title(26px)
+    @media (max-width: 768px) {
+        @include title(26px);
     }
 }
 
 .title {
     @include title;
 
-    @media (max-width:768px) {
-        @include title(24px)
+    @media (max-width: 768px) {
+        @include title(24px);
     }
 }
 
 .title--small {
     @include title(28px);
 
-    @media (max-width:768px) {
-        @include title(22px)
+    @media (max-width: 768px) {
+        @include title(22px);
     }
 }
 
@@ -116,7 +121,6 @@ body {
         background-color: lighten($color: #6421ff, $amount: 3%);
     }
 
-
     &--secondary {
         background-color: #0063e5;
         border-color: #0063e5;
@@ -137,6 +141,7 @@ body {
     }
 }
 
+// Estilos para seções HTML
 section {
     min-height: 50vw;
 }
@@ -147,7 +152,7 @@ section {
     grid-template-columns: 1fr 1fr;
     align-items: center;
 
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
         display: block;
     }
 
@@ -176,13 +181,12 @@ section {
             top: 0;
             left: 50%;
             height: 100%;
-            // width: calc(50%-5.6vw);
             padding-right: 11.2vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
 
-            @media (max-width:768px) {
+            @media (max-width: 768px) {
                 position: relative;
                 left: 0;
                 width: 100%;

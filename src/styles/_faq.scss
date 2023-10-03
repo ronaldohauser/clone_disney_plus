@@ -2,7 +2,7 @@
     padding: 5.6vw;
 
     h2 {
-        text-align: center;
+        text-align: center; 
         margin-bottom: 24px;
     }
 
@@ -14,7 +14,7 @@
             list-style: none;
 
             &__question {
-                color: white;
+                color: white; 
                 font-size: 20px;
                 padding: 24px;
                 display: block;
@@ -22,7 +22,7 @@
                 position: relative;
 
                 &::after {
-                    content: '+';
+                    content: '+'; 
                     position: absolute;
                     top: 0;
                     right: 24px;
@@ -37,16 +37,16 @@
                 height: 0;
                 overflow: hidden;
                 padding: 0 24px;
-                transition: height, 0.5s ease;
+                transition: height 0.5s ease; // Transição suave para a abertura da resposta
             }
 
             &--is-open {
                 .faq__questions__item__question::after {
-                    content: '-';
+                    content: '-'; // Altera o sinal para "-" quando a pergunta está aberta
                 }
 
                 .faq__questions__item__answer {
-                    height: auto;
+                    height: auto; // Mostra a resposta
                     padding: 24px;
                     padding-top: 0;
                 }
